@@ -1,111 +1,100 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Arial, sans-serif;
-  background-color: #1e1e1e; /* Dark background */
-  color: #e4e4e4; /* Light gray text */
-  padding: 20px;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #12172b; /* Deep navy background */
+  color: #e0e0e0; /* Light text color */
 }
 
 h1, h2, h3 {
-  color: #f4f4f4; /* Lighter text for headings */
-  margin-bottom: 8px;
+  color: #4169e1; /* Royal Blue for headings */
 }
 
-h1 {
-  text-align: center;
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1b223a; /* Slightly lighter dark background for containers */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
 button {
-  background-color: #32cd32; /* Bright lime green */
-  color: #1e1e1e; /* Dark text on light background */
+  background-color: #4169e1; /* Royal Blue for buttons */
+  color: white;
   border: none;
-  padding: 8px 16px;
-  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #28a745; /* Darker green on hover */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #3153b6; /* Darker Royal Blue for hover */
 }
 
-button:focus {
-  outline: none;
-}
-
-select, input {
+input, select {
+  background-color: #202b45; /* Input and select background */
+  color: white;
+  border: 1px solid #4169e1; /* Royal Blue border */
   padding: 8px;
-  margin: 5px;
-  background-color: #333; /* Dark background for inputs */
-  border: 1px solid #444; /* Slightly lighter border */
-  color: #e4e4e4; /* Light text color */
-  font-size: 14px;
-  border-radius: 4px;
+  border-radius: 5px;
+  margin: 5px 0;
 }
 
-input[type="text"] {
-  width: 130px; /* Slightly wider input */
-}
-
-.nfa-editor {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #222; /* Even darker background for the container */
-  padding: 25px;
-  border-radius: 8px;
-  border: 1px solid #444;
-}
-
-button, select, input {
-  font-size: 14px;
-}
-
-.states-list, .transitions-list {
-  display: flex;
-  flex-direction: column;
+input:focus, select:focus {
+  outline: none;
+  border-color: #6096f7; /* Brighter Royal Blue on focus */
 }
 
 .state-item, .transition-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  background-color: #243455; /* Darker background for state/transition blocks */
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
 }
 
-.state-item button, .transition-item button {
-  margin-left: 10px;
-  background-color: #e74c3c; /* Red for delete buttons */
-  color: #fff; /* White text on red button */
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
+.state-item span, .transition-item span {
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
-.state-item button:hover, .transition-item button:hover {
-  background-color: #c0392b; /* Darker red on hover */
+button.small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.alphabet-input {
+  margin-bottom: 20px;
+}
+
+.states-list, .transitions-list {
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
 }
 
 .state-select, .transition-form {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.transition-form select,
-.transition-form input {
-  display: inline-block;
-  width: 140px; /* Increase width for a more spacious layout */
+p {
+  background-color: #243455; /* Matches state/transition blocks */
+  color: #e0e0e0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.transit-form {
-  display: flex;
-  gap: 10px;
+a {
+  color: #6096f7; /* Brighter Royal Blue for links */
+  text-decoration: none;
 }
 
-input[type="text"]::placeholder {
-  color: #bbb;
+a:hover {
+  text-decoration: underline;
 }
