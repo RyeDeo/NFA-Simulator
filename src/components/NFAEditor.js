@@ -8,7 +8,7 @@ function NFAEditor({ nfa, setNfa, alphabet }) {
   });
 
   const addState = () => {
-    const newState = `q${nfa.states.length + 1}`;
+    const newState = `q${nfa.states.length}`;
     if (nfa.states.includes(newState)) return; // Avoid duplicate state names
     setNfa({
       ...nfa,

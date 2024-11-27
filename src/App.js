@@ -11,29 +11,53 @@ function App() {
     acceptState: null,
   });
 
-  const [alphabet, setAlphabet] = useState(['ε']); // Default includes epsilon
+  const [alphabet, setAlphabet] = useState(['ε']);
   const [result, setResult] = useState(null);
 
-  // Test the string for NFA
   const testString = (input) => {
-    let currentStates = new Set([nfa.startState]); // Start with the start state
-
+    let currentStates = new Set([nfa.startState]);
+  
+    currentStates = followEpsilonTransitions(currentStates);
+  
     for (let char of input) {
       let nextStates = new Set();
-
-      // For each current state, get all the possible next states for the given symbol
+  
       currentStates.forEach((state) => {
         const transitions = nfa.transitions[state]?.[char];
         if (transitions) {
           transitions.forEach((nextState) => nextStates.add(nextState));
         }
       });
-
-      currentStates = nextStates; // Set the new current states
+      currentStates = followEpsilonTransitions(nextStates);
     }
-
-    // Check if any of the current states is an accept state
     return Array.from(currentStates).includes(nfa.acceptState);
+  };
+
+  const followEpsilonTransitions = (states) => {
+    let newStates = new Set(states);
+    let epsilonStates = new Set(states);
+  
+    // Keep track of states we've already visited to prevent infinite loops
+    let visitedStates = new Set(states);
+  
+    while (epsilonStates.size > 0) {
+      let state = epsilonStates.values().next().value;
+      epsilonStates.delete(state);
+  
+      // Get epsilon transitions for the current state
+      const epsilonTransitions = nfa.transitions[state]?.['ε'];
+      if (epsilonTransitions) {
+        epsilonTransitions.forEach((nextState) => {
+          if (!visitedStates.has(nextState)) {
+            visitedStates.add(nextState);
+            newStates.add(nextState);
+            epsilonStates.add(nextState);
+          }
+        });
+      }
+    }
+  
+    return newStates;
   };
 
   return (
